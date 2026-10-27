@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>同学二 · 研究进度汇报 | 复杂系统理论与第一中介</title>
+<style>
+  :root{
+    color-scheme: light;
+    --ink:#20242a;
+    --muted:#5d6672;
+    --faint:#8a939e;
+    --line:#d9dee4;
+    --soft:#f2f4f6;
+    --paper:#fbfaf7;
+    --accent:#8a2f22;
+    --accent-soft:#f5e9e6;
+    --green:#2c5f4a;
+    --green-soft:#e8f0eb;
+    --amber:#8a6414;
+    --amber-soft:#f7efd9;
+    --blue:#254e70;
+    --blue-soft:#e8eef4;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Songti SC","Noto Serif CJK SC","Source Han Serif SC",Georgia,"Times New Roman",serif;
+    font-size:15.5px;
+    line-height:1.85;
+  }
+  .page{max-width:1120px;margin:0 auto;padding:0 34px 90px}
+  header.cover{
+    padding:62px 0 34px;
+    border-bottom:3px double var(--ink);
+  }
+  .kicker{font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif;font-size:12px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:14px}
+  h1{font-size:38px;line-height:1.32;margin:0 0 14px;font-weight:600;letter-spacing:.01em}
+  .subtitle{font-size:18px;color:var(--muted);margin:0 0 25px;line-height:1.7}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif;font-size:12.5px;color:var(--muted)}
+  .meta b{color:var(--ink);font-weight:600}
+  .layout{display:grid;grid-template-columns:206px minmax(0,1fr);gap:48px;align-items:start;margin-top:38px}
+  nav.toc{position:sticky;top:24px;font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif;font-size:12.5px;line-height:1.55}
+  nav.toc .nav-title{font-size:10.5px;letter-spacing:.16em;color:var(--faint);margin-bottom:14px;text-transform:uppercase}
+  nav.toc a{display:block;text-decoration:none;color:var(--muted);padding:6px 0 6px 13px;border-left:2px solid var(--line)}
+  nav.toc a:hover{color:var(--accent);border-left-color:var(--accent)}
+  nav.toc a .n{color:var(--faint);font-variant-numeric:tabular-nums;margin-right:7px}
+  main{min-width:0}
+  section{margin-bottom:52px;scroll-margin-top:18px}
+  h2{font-size:24px;font-weight:600;margin:0 0 6px;line-height:1.4;letter-spacing:.01em}
+  h2 .num{display:inline-block;font-size:12px;font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif;color:#fff;background:var(--ink);padding:2px 7px;vertical-align:5px;margin-right:10px;letter-spacing:.05em;font-weight:500}
+  .lede{color:var(--muted);margin:0 0 24px;padding-bottom:14px;border-bottom:1px solid var(--line);font-size:14.5px}
+  h3{font-size:17px;font-weight:600;margin:28px 0 10px}
+  h4{font-size:14.5px;font-weight:600;margin:20px 0 6px;font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+  p{margin:0 0 13px}
+  strong{font-weight:600}
+  em{font-style:italic}
+  a{color:var(--blue)}
+  .callout{padding:15px 18px;margin:18px 0;border-left:3px solid var(--ink);background:#fff;font-size:14.5px}
+  .callout.warn{border-left-color:var(--amber);background:var(--amber-soft)}
+  .callout.fix{border-left-color:var(--green);background:var(--green-soft)}
+  .callout.stop{border-left-color:var(--accent);background:var(--accent-soft)}
+  .callout .tag{display:block;font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif;font-size:10.5px;letter-spacing:.13em;color:var(--muted);margin-bottom:5px;text-transform:uppercase}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:18px 0}
+  .card{background:#fff;border:1px solid var(--line);padding:16px 17px}
+  .card .lab{font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif;font-size:10.5px;letter-spacing:.12em;color:var(--faint);margin-bottom:6px;text-transform:uppercase}
+  .card .big{font-size:27px;line-height:1.25;font-weight:600;font-variant-numeric:tabular-nums}
+  .card p{font-size:13px;color:var(--muted);margin:5px 0 0;line-height:1.6}
+  table{width:100%;border-collapse:collapse;margin:16px 0 8px;font-size:13.4px;line-height:1.65}
+  th{text-align:left;font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif;font-size:11px;letter-spacing:.08em;color:var(--muted);font-weight:600;border-bottom:1.5px solid var(--ink);padding:8px 9px 7px;vertical-align:bottom;text-transform:uppercase}
+  td{border-bottom:1px solid var(--line);padding:9px;vertical-align:top}
+  tr:last-child td{border-bottom:1.5px solid var(--ink)}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .pill{display:inline-block;font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif;font-size:11px;line-height:1.6;padding:1px 7px;white-space:nowrap;border:1px solid currentColor}
+  .pill.ok{color:var(--green);background:var(--green-soft)}
+  .pill.part{color:var(--amber);background:var(--amber-soft)}
+  .pill.no{color:var(--accent);background:var(--accent-soft)}
+  .pill.info{color:var(--blue);background:var(--blue-soft)}
+  ul,ol{margin:0 0 14px;padding-left:22px}
+  li{margin-bottom:6px}
+  .ref{padding:15px 0;border-top:1px solid var(--line)}
+  .ref:last-child{border-bottom:1px solid var(--line)}
+  .ref .cite{font-size:14px;margin-bottom:4px}
+  .ref .cite .who{font-weight:600}
+  .ref .meta-line{font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif;font-size:11.5px;color:var(--muted);margin-bottom:8px}
+  .ref dl{display:grid;grid-template-columns:72px minmax(0,1fr);gap:3px 12px;margin:0;font-size:13.2px;line-height:1.75}
+  .ref dt{font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif;font-size:11px;color:var(--faint);padding-top:2px}
+  .ref dd{margin:0}
+  .flow{display:grid;grid-template-columns:1fr 26px 1fr 26px 1fr;align-items:stretch;margin:20px 0;font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif;font-size:12.5px;line-height:1.6}
+  .flow .node{border:1px solid var(--ink);background:#fff;padding:12px}
+  .flow .node .t{font-weight:600;font-size:13px;display:block;margin-bottom:3px}
+  .flow .node .d{color:var(--muted);font-size:11.5px}
+  .flow .arrow{display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:17px}
+  .hyp{border:1px solid var(--line);background:#fff;padding:13px 16px;margin-bottom:9px}
+  .hyp .id{font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif;font-size:11px;color:var(--accent);letter-spacing:.09em;font-weight:600}
+  .hyp p{margin:2px 0 0;font-size:13.8px}
+  .log{font-family:"SFMono-Regular","Menlo","Consolas","Liberation Mono",monospace;font-size:12px;line-height:1.7;background:#fff;border:1px solid var(--line);padding:14px 16px;overflow-x:auto;white-space:pre-wrap;word-break:break-word}
+  .log .c{color:var(--faint)}
+  .log .k{color:var(--accent)}
+  .log .g{color:var(--green)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:16px 0}
+  .box{border:1px solid var(--line);background:#fff;padding:15px 17px}
+  .box h4{margin-top:0}
+  .box ul{margin-bottom:0;font-size:13.5px}
+  .step{display:grid;grid-template-columns:70px minmax(0,1fr);gap:16px;padding:15px 0;border-top:1px solid var(--line)}
+  .step:last-child{border-bottom:1px solid var(--line)}
+  .step .when{font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif;font-size:11.5px;color:var(--muted);line-height:1.6;padding-top:2px}
+  .step .what h4{margin:0 0 3px}
+  .step .what p{margin:0;font-size:13.6px;color:var(--muted)}
+  footer{margin-top:58px;padding-top:18px;border-top:3px double var(--ink);font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif;font-size:11.5px;color:var(--faint);line-height:1.85}
+  @media (max-width:880px){
+    .layout{grid-template-columns:1fr;gap:20px}
+    nav.toc{position:static;border-bottom:1px solid var(--line);padding-bottom:12px}
+    nav.toc a{display:inline-block;border-left:0;padding:3px 12px 3px 0}
+    .grid-3,.two{grid-template-columns:1fr}
+    .flow{grid-template-columns:1fr;gap:0}
+    .flow .arrow{height:22px;transform:rotate(90deg)}
+    h1{font-size:29px}
+    .page{padding:0 20px 60px}
+    table{table-layout:fixed}
+    th,td{padding:7px 5px;font-size:12px;word-break:break-word}
+    th{font-size:10px;letter-spacing:.03em}
+    .ref dl{grid-template-columns:58px minmax(0,1fr);gap:3px 9px}
+    .step{grid-template-columns:1fr;gap:4px}
+    .step .when{padding-top:0}
+  }
+  @media print{
+    body{background:#fff;font-size:11.5pt}
+    nav.toc{display:none}
+    .layout{grid-template-columns:1fr}
+    section{break-inside:avoid-page}
+    .ref{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="cover">
+  <div class="kicker">Research Progress Dossier · 2026.10.27</div>
+  <h1>复杂系统理论如何解释“心理资源 → 认知自组织”</h1>
+  <p class="subtitle">荣誉学院本科生创新能力研究 · 同学二负责模块的阶段性进度报告<br>第一理论绑定、第一中介定位、教育学近期文献核查与证据缺口清单</p>
+  <div class="meta">
+    <span><b>汇报人</b>　同学二</span>
+    <span><b>模块</b>　复杂系统理论 + C1 认知自组织</span>
+    <span><b>阶段</b>　第 2 周 · 模块初稿</span>
+    <span><b>证据截止</b>　2026-10-27</span>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="toc" aria-label="目录">
+  <div class="nav-title">Contents</div>
+  <a href="#s0"><span class="n">00</span>进度总览</a>
+  <a href="#s1"><span class="n">01</span>我在项目中的位置</a>
+  <a href="#s2"><span class="n">02</span>本周实际完成</a>
+  <a href="#s3"><span class="n">03</span>理论绑定：能解释什么</a>
+  <a href="#s4"><span class="n">04</span>第一中介的定位论证</a>
+  <a href="#s5"><span class="n">05</span>文献检索与筛选日志</a>
+  <a href="#s6"><span class="n">06</span>逐篇评读</a>
+  <a href="#s7"><span class="n">07</span>论断—证据矩阵</a>
+  <a href="#s8"><span class="n">08</span>竞争解释与反证</a>
+  <a href="#s9"><span class="n">09</span>已识别问题与修法</a>
+  <a href="#s10"><span class="n">10</span>与他人的接口</a>
+  <a href="#s11"><span class="n">11</span>下一步与交付</a>
+  <a href="#s12"><span class="n">12</span>汇报口径与问答</a>
+</nav>
+
+<main>
+
+<!-- ============ 00 ============ -->
+<section id="s0">
+  <h2><span class="num">00</span>进度总览</h2>
+  <p class="lede">先说结论：理论框架已经能站住“有限解释”，但还没有找到能直接验证 A→C1 的实证研究；这正是下一阶段要补的核心缺口，而不是可以含混过去的空白。</p>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="lab">已完成</div>
+      <div class="big">6 篇</div>
+      <p>2024 年后论文完成 DOI、作者、卷期与摘要核验，并逐篇写清可用边界。</p>
+    </div>
+    <div class="card">
+      <div class="lab">核心判断</div>
+      <div class="big">1 条</div>
+      <p>复杂系统理论解释“互动—涌现”的过程条件，不直接证明变量顺序或因果。</p>
+    </div>
+    <div class="card">
+      <div class="lab">最大缺口</div>
+      <div class="big">A→C1</div>
+      <p>尚无直接检验“心理资源→个体认知自组织”的近期高质量实证研究。</p>
+    </div>
+  </div>
+
+  <h3>一句话版进度</h3>
+  <p>我把原先“用复杂系统理论证明认知自组织是第一中介”的写法，改造成一个<strong>可辩护的两层论证</strong>：第一层说明为什么复杂系统视角适合研究这一过程；第二层说明为什么在概念上，认知重组必须先于反馈调节。第一层已有理论与教育情境文献支撑，第二层仍属于<strong>待检验的构念论证</strong>，不能冒充已被理论证明。</p>
+
+  <h3>本周三个实质变化</h3>
+  <table>
+    <thead><tr><th style="width:21%">变化</th><th style="width:39%">原来的写法</th><th>现在的写法</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>理论角色</strong></td>
+        <td>复杂系统理论“支撑”A→C1→C2→B 整条链</td>
+        <td>它只负责解释互动、非线性、情境依赖与涌现，不替代具体机制和测量</td>
+      </tr>
+      <tr>
+        <td><strong>因果强度</strong></td>
+        <td>心理资源提供“负熵”，认知自组织“必然”发生</td>
+        <td>心理资源“为持续参与、承受不确定性和认知重组提供条件”；删除无出处的负熵</td>
+      </tr>
+      <tr>
+        <td><strong>顺序论证</strong></td>
+        <td>认知自组织是第一阶段，因为理论如此</td>
+        <td>顺序是<strong>过程逻辑上的候选</strong>：先形成可被检验的理解，才谈得上依据反馈调整</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ 01 ============ -->
+<section id="s1">
+  <h2><span class="num">01</span>我在项目中的位置</h2>
+  <p class="lede">先把边界说清：我不是在写整篇论文的理论章，而是负责其中一段的“理论—变量—路径”绑定，并为 C1 的阶段位置提供可辩论证。</p>
+
+  <h3>项目模型</h3>
+  <p>项目当前设定的串行中介模型是：积极心理资源（正念、坚毅、韧性）→ 认知自组织（C1）→ 反馈导向适应性学习（C2）→ 创新能力。对应四个假设：</p>
+  <div class="hyp"><div class="id">H1 · TOTAL EFFECT</div><p>积极心理资本正向预测荣誉学院本科生的创新能力（A→B）。</p></div>
+  <div class="hyp"><div class="id">H2 · COGNITIVE MEDIATION</div><p>认知自组织在心理资本与创新能力之间起中介作用（A→C1→B）。</p></div>
+  <div class="hyp"><div class="id">H3 · BEHAVIORAL MEDIATION</div><p>反馈导向适应性学习在认知自组织与创新能力之间起中介作用（C1→C2→B）。</p></div>
+  <div class="hyp"><div class="id">H4 · SERIAL MEDIATION</div><p>心理资本经“认知自组织→反馈导向适应性学习”的连续链条影响创新能力（A→C1→C2→B）。</p></div>
+
+  <h3>我的交付范围</h3>
+  <table>
+    <thead><tr><th style="width:26%">任务</th><th style="width:37%">要求</th><th>本周状态</th></tr></thead>
+    <tbody>
+      <tr><td>复杂系统理论深度绑定</td><td>说明该理论如何具体解释心理资源、认知调整与创新能力之间的动态关系，以及为何支持本研究变量选择</td><td><span class="pill ok">框架完成</span> 已形成“能解释/不能解释”的边界表</td></tr>
+      <tr><td>第一中介定位论证</td><td>解释为什么认知自组织是心理资源转化为创新能力的“第一阶段”</td><td><span class="pill part">论证初稿</span> 已区分过程先后与统计路径</td></tr>
+      <tr><td>教育学针对性文献</td><td>面向教育学（含教育心理学）目标期刊，补充代表性学者的近期文献</td><td><span class="pill part">6 篇已核</span> 直接证据仍缺</td></tr>
+      <tr><td>与同学四衔接</td><td>理论部分需与理论串联、H1—H4 推导对齐</td><td><span class="pill info">待会商</span> 已列出四个接口问题</td></tr>
+      <tr><td>与同学五对齐</td><td>C1 的定义必须能对应测量工具</td><td><span class="pill info">待会商</span> 已提出构念边界质疑</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <span class="tag">范围纪律</span>
+    前端“心理资本”究竟怎样界定、结果变量到底叫创新胜任力还是创新行为，不由我这段单方面宣布；我统一使用“心理资源（项目暂定定义）”，等同学一与同学四定稿后再替换。
+  </div>
+</section>
+
+<!-- ============ 02 ============ -->
+<section id="s2">
+  <h2><span class="num">02</span>本周实际完成</h2>
+  <p class="lede">按“可核查动作”而非“感觉做了很多”来记录：检索、筛选、核验、改写、提出问题，各自留下痕迹。</p>
+
+  <h3>完成清单</h3>
+  <table>
+    <thead><tr><th style="width:9%">序号</th><th style="width:33%">动作</th><th>产出与判断</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td>拆解专家意见</td><td>把“理论两张皮、假设凭空出现、顺序未论证”拆成三个可分别处理的问题，而不是笼统写“加强理论”。</td></tr>
+      <tr><td class="num">2</td><td>重写理论定位</td><td>把复杂系统理论从“全模型背书”降为“过程与互动层面的解释框架”，避免理论越位。</td></tr>
+      <tr><td class="num">3</td><td>建立检索策略</td><td>用“复杂系统/自组织 × 教育/学习 × 认知/过程”组合，并限定 2024 年后、期刊论文。</td></tr>
+      <tr><td class="num">4</td><td>批量初筛</td><td>检索返回数十条结果，逐条排除同名不同义、仅标题沾边、撤稿、非教育情境与预印/书章。</td></tr>
+      <tr><td class="num">5</td><td>元数据核验</td><td>对 6 篇候选逐条核对 DOI、作者、年份、期刊、卷期页码与摘要，不凭搜索摘要直接引用。</td></tr>
+      <tr><td class="num">6</td><td>写证据边界</td><td>每篇都标注“能支持什么、不能支持什么”，避免把邻近研究当直接证据。</td></tr>
+      <tr><td class="num">7</td><td>构造竞争解释</td><td>提出并行中介、反向路径、循环模型三种替代结构，说明现模型为何仍需防守。</td></tr>
+      <tr><td class="num">8</td><td>提出接口问题</td><td>给同学一、三、四、五各列出需要对齐的具体问题，而不是泛泛说“多沟通”。</td></tr>
+    </tbody>
+  </table>
+
+  <h3>没有完成、也不假装完成的部分</h3>
+  <ul>
+    <li>没有找到直接检验“正念/坚毅/韧性 → 认知自组织”的 2024 年后实证研究。</li>
+    <li>没有完成 SSCI 收录状态的官方逐刊核验；索引数据库能核 DOI，但不能替代 Master Journal List。</li>
+    <li>没有拿到 C1 的成熟量表与构念对应证据，这部分依赖同学五。</li>
+    <li>没有做系统综述式的全文编码；目前是<strong>定向检索 + 候选评读</strong>，不是 PRISMA 全流程。</li>
+  </ul>
+</section>
+
+<!-- ============ 03 ============ -->
+<section id="s3">
+  <h2><span class="num">03</span>理论绑定：复杂系统理论能解释什么</h2>
+  <p class="lede">理论绑定不是把术语贴到模型上，而是明确它负责解释哪一层、在哪里必须停手。</p>
+
+  <h3>三个层次的分工</h3>
+  <table>
+    <thead><tr><th style="width:22%">层次</th><th style="width:39%">复杂系统理论可以说的</th><th>它不能替代的</th></tr></thead>
+    <tbody>
+      <tr><td><strong>本体层</strong></td><td>学习者处于开放系统中，认知活动受任务、知识基础、同伴与教师互动共同影响</td><td>不能据此断言某一心理特质必然产生某一认知结果</td></tr>
+      <tr><td><strong>过程层</strong></td><td>认知变化可能呈非线性、路径依赖与涌现特征，局部互动可形成较稳定的新模式</td><td>不能替代对“什么在互动、按什么机制互动”的具体说明</td></tr>
+      <tr><td><strong>方法层</strong></td><td>提示应关注过程指标、时间变化与情境条件，而非只看静态横断面相关</td><td>不能自动给出本研究的量表、时间间隔或识别策略</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <span class="tag">关键防守</span>
+    复杂系统理论是<strong>本体论与过程论层面的框架</strong>，不是一条能推出 H2 的因果定律。若把它写成“因为复杂系统理论，所以 A 导致 C1”，评审会立刻追问：理论中的哪条命题允许你这样推导？目前没有。
+  </div>
+
+  <h3>A→C1 的候选机制链</h3>
+  <p>我把机制拆成三个可分别找证据的环节，避免把三种心理资源笼统合并：</p>
+  <div class="flow">
+    <div class="node"><span class="t">① 资源条件</span><span class="d">正念觉察、坚毅投入、挫折后恢复</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><span class="t">② 参与条件</span><span class="d">持续参与开放任务、承受暂时不确定性、愿意尝试不同连接</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><span class="t">③ 认知过程</span><span class="d">信息/经验连接、重组，形成新问题表征或理解</span></div>
+  </div>
+  <p>这条链的每一段都需要单独的证据。复杂系统理论只能为②到③的“互动—重组—涌现”提供语言，不能替①到②的三种资源功能背书。尤其正念、坚毅、韧性在概念上并不同质，不能用一个“心理资本”标签掩盖三种不同机制。</p>
+
+  <h3>为什么删掉“负熵”</h3>
+  <p>原稿写“心理资本提供负熵以维持认知不平衡”。这句话在物理系统里有明确含义，但迁移到心理构念后没有可检验定义，也没有本项目可引用的理论出处。保留它会让评审认为我们在用科学隐喻替代机制。替代写法是“提供持续参与、承受不确定性与恢复的个体条件”，每一部分都可以对应到具体文献。</p>
+</section>
+
+<!-- ============ 04 ============ -->
+<section id="s4">
+  <h2><span class="num">04</span>第一中介的定位论证</h2>
+  <p class="lede">这一节是本模块最容易被追问的地方。我的策略是把“顺序”拆成三种不同强度的主张，只主张最弱、也最可辩护的那一种。</p>
+
+  <h3>三种顺序主张</h3>
+  <table>
+    <thead><tr><th style="width:23%">主张</th><th style="width:31%">内容</th><th style="width:17%">证据要求</th><th>我的取舍</th></tr></thead>
+    <tbody>
+      <tr><td><strong>逻辑必然</strong></td><td>C1 在概念上不可能晚于 C2，顺序不可逆</td><td>概念分析或公理式推导</td><td><span class="pill no">不主张</span> 目前推不出来</td></tr>
+      <tr><td><strong>经验先后</strong></td><td>在实际学习过程中，C1 平均先于 C2 发生</td><td>纵向追踪、时间日志、实验操纵</td><td><span class="pill part">待检验</span> 需三波数据</td></tr>
+      <tr><td><strong>过程候选</strong></td><td>C1 是理论上合理、值得检验的前置环节</td><td>构念区分 + 机制论证</td><td><span class="pill ok">当前主张</span> 可站住</td></tr>
+    </tbody>
+  </table>
+
+  <h3>支持“过程候选”的四步论证</h3>
+  <ol>
+    <li><strong>功能差异：</strong>C1 处理的是“把分散信息组织成可理解的整体”，C2 处理的是“依据反馈修正已形成的理解或策略”。前者产出理解对象，后者作用于理解对象。</li>
+    <li><strong>对象依赖：</strong>若没有相对成形的理解或问题表征，反馈就缺少可校准的对象；这让 C1 在功能上成为 C2 的前置条件，而不是简单的时间先后。</li>
+    <li><strong>不确定性来源：</strong>C1 阶段的不确定性来自“信息如何组织”，C2 阶段的不确定性来自“我的理解是否经得起外部检验”。两者是不同性质的不确定性，支持把它们区分为两个构念。</li>
+    <li><strong>理论分工：</strong>复杂系统理论负责解释 C1 的涌现性；自我调节学习理论负责解释 C2 的反馈校准。两理论各管一段，衔接点正是“已成形的理解需要外部验证”。</li>
+  </ol>
+
+  <div class="callout fix">
+    <span class="tag">可直接写进论文的表述</span>
+    本研究不主张认知自组织在时间上必然先于反馈导向适应性学习，而主张二者构成一个有理论依据的候选序列：认知自组织生成可供检验的理解与问题表征，反馈导向适应性学习则依据外部信息校准这些理解。该序列是否成立，需由纵向设计与竞争模型比较来检验。
+  </div>
+
+  <h3>必须承认的反向可能</h3>
+  <p>反馈也可能反过来改变认知组织方式：学生获得反馈后重新连接信息，形成新的理解。这意味着真实过程可能是循环而非单向。我们的单向模型是对循环过程的一次可检验简化，必须在局限部分写清，并在数据分析时比较替代模型。Thien 与 Hallinger（2025）在教师样本中发现双向关系，正好说明教育系统中的互惠性不能被默认为不存在。</p>
+</section>
+
+<!-- ============ 05 ============ -->
+<section id="s5">
+  <h2><span class="num">05</span>文献检索与筛选日志</h2>
+  <p class="lede">这一节刻意保留“怎么找、怎么排除”的过程，因为评审真正会判断的是筛选标准，而不是最后列出的六条参考文献。</p>
+
+  <h3>检索设计</h3>
+  <table>
+    <thead><tr><th style="width:23%">维度</th><th>设定</th></tr></thead>
+    <tbody>
+      <tr><td>时间范围</td><td>2024-01-01 起，优先 2024—2026 正式发表</td></tr>
+      <tr><td>文献类型</td><td>同行评审期刊论文；排除书章、会议摘要、预印本、撤稿</td></tr>
+      <tr><td>主题组合</td><td>(complexity theory / complex adaptive systems / self-organization) × (education / learning / higher education) × (cognition / learning process / creativity)</td></tr>
+      <tr><td>补充方向</td><td>心理资源（正念、坚毅、韧性）× 认知灵活性 / 知识整合 / 创造性表现</td></tr>
+      <tr><td>核验来源</td><td>Crossref 元数据 + OpenAlex 摘要与引用信息；逐条回到 DOI 页面确认</td></tr>
+    </tbody>
+  </table>
+
+  <h3>检索轨迹（节选）</h3>
+  <div class="log"><span class="c"># 第 1 轮：宽口径，看领域里 2024 年后到底在谈什么</span>
+query = <span class="k">complexity theory education learning</span>
+  filter = from-pub-date:2024-01-01, type:journal-article
+  → 命中含 <span class="g">Sato et al. 2025 (TATE)</span>、<span class="g">Thien & Hallinger 2025 (JEA)</span>
+  → 同时混入大量 "task complexity"、"computational complexity" 同名不同义结果
+
+<span class="c"># 第 2 轮：收紧到 self-organization，检查是否有真正的“自组织”教育研究</span>
+query = <span class="k">self-organization student learning education</span>
+  → 多数为 "self-regulated / self-directed learning"，<span class="g">构念不同，不能混用</span>
+  → 少数为区域期刊的理论综述，证据等级不足
+
+<span class="c"># 第 3 轮：查高影响力教育期刊是否真的在使用复杂性框架</span>
+query = <span class="k">complexity theory teacher education systems 2025</span>
+  → 发现 JEA 的非线性/双向研究，可作为“复杂系统不等于单向因果”的反证
+
+<span class="c"># 第 4 轮：转向 A→C1 的邻近证据</span>
+query = <span class="k">psychological capital cognitive flexibility creativity university students 2024</span>
+  → 多为相关研究，构念定义与 PsyCap 传统模型不一致，暂不作为核心证据
+
+<span class="c"># 第 5 轮：逐条核验，不只信搜索摘要</span>
+for doi in candidates:
+    crossref /works/{doi}   → 核作者、年份、卷期、页码
+    openalex /works/{doi}   → 核摘要、引用数、索引来源
+</div>
+
+  <h3>纳入与排除标准</h3>
+  <div class="two">
+    <div class="box">
+      <h4>纳入</h4>
+      <ul>
+        <li>明确使用复杂性/复杂适应系统/自组织概念，而非仅出现“complex”一词</li>
+        <li>教育或学习情境，且能说清研究对象与设计</li>
+        <li>可核对 DOI 与完整出版信息</li>
+        <li>对“理论适配”“方法启示”或“反证”至少一项有实际作用</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>排除</h4>
+      <ul>
+        <li>“task complexity”“computational complexity”等同名不同义</li>
+        <li>已撤稿或被标注 Retracted 的文章</li>
+        <li>只有摘要、无法核实方法的学生期刊或低质量会议稿</li>
+        <li>把 self-regulated learning 直接当作 self-organization 的误配文献</li>
+        <li>与本研究人群、情境差距过大且无理论迁移价值的文章</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="tag">方法诚实</span>
+    本轮是定向检索与候选评读，不是系统综述。检索词、数据库与筛选规则已记录，可在需要时扩展为 PRISMA 流程；但目前不宣称“已穷尽文献”。
+  </div>
+</section>
+
+<!-- ============ 06 ============ -->
+<section id="s6">
+  <h2><span class="num">06</span>逐篇评读</h2>
+  <p class="lede">每篇都回答四个问题：它做了什么、能支持我哪句话、不能支持什么、我准备怎么用。以下信息已核对 DOI、作者、年份、期刊与卷期。</p>
+
+  <div class="ref">
+    <div class="cite"><span class="who">Sato, M., Ma, T., &amp; Abbiss, J.</span> (2025). Using complexity theory to understand teaching: Re-framing perspectives from preservice teachers. <em>Teaching and Teacher Education, 156</em>, 104905.</div>
+    <div class="meta-line">新西兰 · 38 名职前教师 · 访谈的探索性分析 · <a href="https://doi.org/10.1016/j.tate.2024.104905">10.1016/j.tate.2024.104905</a></div>
+    <dl>
+      <dt>研究了什么</dt><dd>职前教师如何理解教学活动的复杂性，以及复杂性理论能否为他们提供描述这种复杂性的语言。</dd>
+      <dt>核心发现</dt><dd>教师现有的概念语言不足以命名教学中的非线性、网络化互动、可预测性与不确定性之间的张力，以及持续适应的必要性；作者用复杂性理论重新框定这些描述。</dd>
+      <dt>能支持</dt><dd>“复杂系统视角适合描述教育活动中互动、不确定性与涌现的过程特征”，可作为理论适配的教育领域依据。</dd>
+      <dt>不能支持</dt><dd>不涉及学生心理资源，不测量个体认知自组织，不能作为 A→C1 的实证证据。</dd>
+      <dt>我的用法</dt><dd>放在理论绑定一节，作为“复杂性视角已被用于教育过程研究”的代表性近期文献；同时在方法局限中说明它研究的是教师认知，不是学生认知。</dd>
+    </dl>
+  </div>
+
+  <div class="ref">
+    <div class="cite"><span class="who">Thien, L. M., &amp; Hallinger, P.</span> (2025). Linear and nonlinear dynamics between principal instructional leadership, teacher professional learning and teacher self-efficacy: A complexity theory approach. <em>Journal of Educational Administration, 64</em>(1), 31–46.</div>
+    <div class="meta-line">马来西亚 · 48 所学校 418 名教师 · 横断面问卷 + PLS-SEM · <a href="https://doi.org/10.1108/JEA-06-2025-0248">10.1108/JEA-06-2025-0248</a></div>
+    <dl>
+      <dt>研究了什么</dt><dd>以复杂性理论为框架，同时检验教学领导、教师专业学习与教师自我效能之间的线性、非线性及间接关系。</dd>
+      <dt>核心发现</dt><dd>线性直接与间接关系均显著；同时发现显著的非线性与双向关系，说明影响并非均匀，自我效能与教师学习之间可能互惠。</dd>
+      <dt>能支持</dt><dd>教育系统中的关系可能非线性、情境依赖且具互惠性；为“不能把复杂系统压扁成单向确定因果”提供直接经验例证。</dd>
+      <dt>不能支持</dt><dd>对象是教师与学校领导，不是学生；横断面资料不能确认时间先后；不能证明本研究 C1→C2 的顺序。</dd>
+      <dt>我的用法</dt><dd>放在“竞争解释与反证”一节，用来主动暴露单向串联模型的理论负担，并支撑后续比较替代模型的必要性。</dd>
+    </dl>
+  </div>
+
+  <div class="ref">
+    <div class="cite"><span class="who">Bezzina, C., McQuade, R., Lowe, W., Mair, F., &amp; Pope, L.</span> (2025). Shattering the Shield: Embracing Complexity in Undergraduate Medical Education. <em>The Clinical Teacher, 22</em>(1).</div>
+    <div class="meta-line">苏格兰 · 17 名高年级医学生 · 4 组焦点小组 · 反身性主题分析 · <a href="https://doi.org/10.1111/tct.70018">10.1111/tct.70018</a></div>
+    <dl>
+      <dt>研究了什么</dt><dd>医学生如何经历、应对复杂病例，以及课程应如何把“复杂性”纳入临床教学。</dd>
+      <dt>核心发现</dt><dd>学生把复杂共病、沟通难题与情绪张力视为复杂性的一部分；过度保护、缺少试错机会会限制发展；在适当支架下，接触复杂情境具有学习价值。</dd>
+      <dt>能支持</dt><dd>复杂、开放、带有不确定性的任务需要真实参与和支架，才可能转化为学习；可作为“参与条件”这一环节的质性证据。</dd>
+      <dt>不能支持</dt><dd>临床教育情境，结果是对复杂病例的学习体验，不是认知自组织，也不是心理资源路径的量化检验。</dd>
+      <dt>我的用法</dt><dd>用于说明为什么“接触开放性任务”是机制链中不可省略的一环；明确标注为邻近证据与质性研究。</dd>
+    </dl>
+  </div>
+
+  <div class="ref">
+    <div class="cite"><span class="who">Wang, K., Zhang, L. J., Wang, M., Wu, Y., &amp; Cooper, M.</span> (2024). The effects of task complexity and collaborative writing on L2 syntactical complexity development: A self-determination theory perspective. <em>Learning and Motivation, 88</em>, 102035.</div>
+    <div class="meta-line">中国 · 126 名研究生 EFL 学习者 · 四组准实验 + 前测/后测/延迟后测 · <a href="https://doi.org/10.1016/j.lmot.2024.102035">10.1016/j.lmot.2024.102035</a></div>
+    <dl>
+      <dt>研究了什么</dt><dd>不同认知要求的协作写作任务，是否会差异化地影响学习者后续独立写作中的句法复杂度发展。</dd>
+      <dt>核心发现</dt><dd>通过混合方差分析比较不同任务条件下的语言复杂度变化，关注情绪体验在协作写作过程中的解释作用。</dd>
+      <dt>能支持</dt><dd>“任务的认知要求与互动学习经历，可能关联后续个体表现”的邻近实证例证，且设计上包含延迟后测，值得借鉴。</dd>
+      <dt>不能支持</dt><dd>理论框架是自我决定理论；结果是二语句法复杂度；没有测量心理资本或认知自组织。</dd>
+      <dt>我的用法</dt><dd>只作为设计参照：说明任务操纵与延迟测量如何做；不作为理论支撑，也不放进复杂性理论的核心论证。</dd>
+    </dl>
+  </div>
+
+  <div class="ref">
+    <div class="cite"><span class="who">Reitman, J. G., Harrison, J. L., Gorman, J. C., Lieber, R., &amp; D’Mello, S. K.</span> (2025). Communicative influence: A novel measure of team dynamics that integrates team cognition theory with collaborative problem solving assessment. <em>Journal of Educational Psychology, 117</em>(1), 134–151.</div>
+    <div class="meta-line">教育心理学 · 团队认知与协作问题解决测量 · <a href="https://doi.org/10.1037/edu0000904">10.1037/edu0000904</a></div>
+    <dl>
+      <dt>研究了什么</dt><dd>提出一种整合团队认知理论与协作问题解决评估的新指标，用沟通过程刻画团队动态。</dd>
+      <dt>核心发现</dt><dd>把“认知”从静态自陈转向可观察的互动过程，并给出可操作的过程测量思路。</dd>
+      <dt>能支持</dt><dd>方法学启示：核心中介变量最好有可观察的行为或过程指标，而不是只依赖抽象自陈量表。</dd>
+      <dt>不能支持</dt><dd>测的是团队层面沟通动态，不是个体认知自组织，不能直接替代 C1 量表。</dd>
+      <dt>我的用法</dt><dd>放在“测量接口”一节，作为提醒同学五：C1 的操作化需要过程证据，团队测量只能借鉴思路。</dd>
+    </dl>
+  </div>
+
+  <div class="ref">
+    <div class="cite"><span class="who">Yang, Y.</span> (2024). Complexity theory for complexity reduction? Revisiting the ontological and epistemological basis of complexity science with Critical Realism. <em>Journal for the Theory of Social Behaviour, 54</em>(4), 368–383.</div>
+    <div class="meta-line">社会理论 · 复杂性科学的本体论与方法论反思 · <a href="https://doi.org/10.1111/jtsb.12412">10.1111/jtsb.12412</a></div>
+    <dl>
+      <dt>研究了什么</dt><dd>批评复杂性理论的经验应用常停留在经验层面，主张借助批判实在论区分实在、实际与经验三层，识别生成事件的机制。</dd>
+      <dt>核心发现</dt><dd>仅描述“复杂性”或相关模式不够，令人满意的解释需要指出产生现象的因果机制。</dd>
+      <dt>能支持</dt><dd>方法论防守：我们不能只写“涌现、非线性”就宣称完成理论论证，必须把 A→C1 的机制说具体。</dd>
+      <dt>不能支持</dt><dd>社会理论论文，不提供教育实证结果，也不直接支持任何具体路径。</dd>
+      <dt>我的用法</dt><dd>放在理论绑定的“边界”部分，用来解释为什么我坚持把机制拆成三段、逐段找证据，而不是停留在术语层。</dd>
+    </dl>
+  </div>
+
+  <h3>经典理论来源</h3>
+  <p>除上述近期文献外，理论根基仍来自 Davis &amp; Sumara（2006, 2008）与 Mason（2008）对教育中复杂性理论的阐释。引用前需核对具体版本与页码；这些来源提供框架，不提供本项目路径的实证证明。</p>
+</section>
+
+<!-- ============ 07 ============ -->
+<section id="s7">
+  <h2><span class="num">07</span>论断—证据矩阵</h2>
+  <p class="lede">把每一句准备写进论文的话，逐条对照证据强度。凡是“弱/缺口”的格子，就是我不能在汇报里说成“已经证明”的地方。</p>
+
+  <table>
+    <thead><tr><th style="width:31%">我准备主张的命题</th><th style="width:22%">现有依据</th><th style="width:13%">证据强度</th><th>如果被追问</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>复杂系统视角适合研究教育中的互动、不确定性与涌现过程</td>
+        <td>Sato et al. 2025；Davis &amp; Sumara 2006/2008；Mason 2008</td>
+        <td><span class="pill ok">较强</span></td>
+        <td>已有多情境教育研究使用该框架描述过程，但多集中在教学与教师认知</td>
+      </tr>
+      <tr>
+        <td>教育系统中的关系可能是非线性、情境依赖且双向的</td>
+        <td>Thien &amp; Hallinger 2025</td>
+        <td><span class="pill ok">较强</span></td>
+        <td>该研究为教师样本横断面；方向性结论有限，但足以反驳“默认单向”</td>
+      </tr>
+      <tr>
+        <td>接触复杂、开放任务并获得支架，是学习转化的重要条件</td>
+        <td>Bezzina et al. 2025</td>
+        <td><span class="pill part">中等</span></td>
+        <td>质性、临床教育情境；可支持机制链的“参与条件”，不能量化推广</td>
+      </tr>
+      <tr>
+        <td>心理资源为持续参与、承受不确定性与认知重组提供条件</td>
+        <td>构念推理 + 邻近研究</td>
+        <td><span class="pill part">偏弱</span></td>
+        <td>尚无直接实证；必须写成待检验机制，分别检索三种资源的具体证据</td>
+      </tr>
+      <tr>
+        <td>认知自组织在概念上先于反馈导向适应性学习</td>
+        <td>功能差异与对象依赖的论证</td>
+        <td><span class="pill part">中等</span></td>
+        <td>这是概念论证，不是经验证明；时间先后需纵向数据</td>
+      </tr>
+      <tr>
+        <td>认知自组织在时间上确实先于 C2 发生</td>
+        <td>—</td>
+        <td><span class="pill no">缺口</span></td>
+        <td>现有横断面设计无法回答；需三波追踪或实验操纵</td>
+      </tr>
+      <tr>
+        <td>A→C1→C2→B 的串行中介成立</td>
+        <td>—</td>
+        <td><span class="pill no">未检验</span></td>
+        <td>这是研究要检验的假设，不能提前写成结论</td>
+      </tr>
+      <tr>
+        <td>正念、坚毅、韧性构成统一的“积极心理资本”</td>
+        <td>待同学一界定</td>
+        <td><span class="pill no">未定</span></td>
+        <td>与传统 PsyCap 构成不同；前端未定前我不替团队下定义</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout stop">
+    <span class="tag">红线</span>
+    矩阵最后四行都是“缺口/未检验/未定”。汇报时如果把它们说成“理论已经支持”，就是本模块最大的失分点。正确说法是：<strong>这是一个有理论依据、等待数据检验的模型。</strong>
+  </div>
+</section>
+
+<!-- ============ 08 ============ -->
+<section id="s8">
+  <h2><span class="num">08</span>竞争解释与反证</h2>
+  <p class="lede">主动写出“还可能是什么”，比等评审替你写更有说服力。以下三个替代结构与我们的模型直接竞争。</p>
+
+  <h3>替代模型一：并行中介</h3>
+  <p>C1 与 C2 并非前后相继，而是同时受心理资源影响、彼此独立地作用于创新能力。若数据支持并行结构，串行中介的核心假设 H4 就不成立。识别方式是比较串行与并行模型的拟合、间接效应大小与置信区间。</p>
+
+  <h3>替代模型二：反向路径</h3>
+  <p>创新能力或反馈学习经验反过来提升认知组织水平，甚至改变心理资源。横断面数据无法排除这一方向。需要时间前置测量或交叉滞后设计。</p>
+
+  <h3>替代模型三：循环模型</h3>
+  <p>C1 与 C2 互为输入，形成“组织—检验—再组织”的循环。这在理论上更贴近复杂系统的互惠性，也更难用单一路径系数表达。我们的单向模型是对该循环的一次简化，应在局限中说明，并用替代模型比较来检验简化是否可接受。</p>
+
+  <h3>来自文献的反证</h3>
+  <p>Thien 与 Hallinger（2025）在教师样本中报告了双向关系，说明教育系统中的互惠性有经验基础。这并不直接否定我们的模型，但要求我们不能把“复杂系统理论”当作单向串联的护身符；相反，该理论恰恰提示应认真对待循环与非线性。</p>
+
+  <div class="callout fix">
+    <span class="tag">转化为优势</span>
+    把这三个替代模型写进研究设计，而不是藏起来：预注册比较方案、报告替代模型拟合、在讨论中解释为何选择当前结构。这样即使串行模型不被支持，研究仍有信息量。
+  </div>
+</section>
+
+<!-- ============ 09 ============ -->
+<section id="s9">
+  <h2><span class="num">09</span>已识别问题与修法</h2>
+  <p class="lede">这些问题是我自己找出来的，不等评审来抓。每一条都配一个可执行修法。</p>
+
+  <table>
+    <thead><tr><th style="width:26%">问题</th><th style="width:31%">为什么会出事</th><th>修法</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>C1 构念不清</strong></td>
+        <td>“认知自组织”可能被读成顿悟、认知灵活性、知识整合或创造性思维，定义漂移会导致量表错配</td>
+        <td>与同学一、五共同写出操作性定义：它指过程还是结果、包含哪些可观察成分、与相邻构念的区分点</td>
+      </tr>
+      <tr>
+        <td><strong>三种资源被合并</strong></td>
+        <td>正念、坚毅、韧性的机制不同，合并成高阶构念会掩盖差异，也难以解释具体路径</td>
+        <td>前端由同学一定义；我在机制层分别写各自可能的功能，不用一个标签代替三条机制</td>
+      </tr>
+      <tr>
+        <td><strong>理论越位</strong></td>
+        <td>用复杂系统理论直接推出因果路径，评审会追问理论中的哪条命题允许此推导</td>
+        <td>把理论限定在本体/过程层；因果路径交给具体机制与实证设计</td>
+      </tr>
+      <tr>
+        <td><strong>顺序论证过强</strong></td>
+        <td>“必然”“不可逆”无法由现有证据支持，且与复杂性理论的循环性相冲突</td>
+        <td>改为“过程候选序列”，并在设计中加入替代模型比较</td>
+      </tr>
+      <tr>
+        <td><strong>横断面因果</strong></td>
+        <td>单次问卷无法确认时间先后，中介效应容易被误读为因果链</td>
+        <td>措辞降为关联/间接效应；推动三波追踪，说明间隔与测量顺序</td>
+      </tr>
+      <tr>
+        <td><strong>文献只沾边</strong></td>
+        <td>标题含 complexity 但研究 computational complexity 或 task complexity，会被认为没读原文</td>
+        <td>逐篇核摘要与方法；建立纳入排除标准；在汇报中主动说明筛掉了什么</td>
+      </tr>
+      <tr>
+        <td><strong>SSCI 口径不实</strong></td>
+        <td>索引数据库能核 DOI，但不能证明某年 SSCI 收录；随口说“SSCI 论文”有风险</td>
+        <td>统一说“已核 DOI 与出版信息”；正式提交前查 Master Journal List 或图书馆</td>
+      </tr>
+      <tr>
+        <td><strong>测量只靠自陈</strong></td>
+        <td>C1 若只用自陈量表，难以区分真实认知过程与自我叙述</td>
+        <td>参考过程测量思路，增加行为或作品指标；至少做多方法验证</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ 10 ============ -->
+<section id="s10">
+  <h2><span class="num">10</span>与他人的接口</h2>
+  <p class="lede">我这段不是孤立章节，至少要与四个人对齐。以下是我准备在会上提出的具体问题，而不是“我们再沟通一下”。</p>
+
+  <table>
+    <thead><tr><th style="width:15%">对象</th><th style="width:30%">需要对齐的内容</th><th>我准备提出的具体问题</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>同学一</strong><br><span style="font-size:12px;color:var(--muted)">概念界定</span></td>
+        <td>心理资本的高阶构念是否成立；三种资源如何界定；结果变量统一叫什么</td>
+        <td>正念与坚毅纳入 PsyCap 的理论与测量依据是什么？若暂不成立，我在正文里用“心理资源”是否会与你的术语冲突？</td>
+      </tr>
+      <tr>
+        <td><strong>同学三</strong><br><span style="font-size:12px;color:var(--muted)">SRL 与 C2</span></td>
+        <td>C2 的构念边界；反馈寻求与适应性学习如何区分；C1/C2 是否概念重叠</td>
+        <td>C2 是否已经包含“重新理解问题”的成分？如果是，C1 与 C2 的区分点在哪里，量表如何避免共线？</td>
+      </tr>
+      <tr>
+        <td><strong>同学四</strong><br><span style="font-size:12px;color:var(--muted)">理论串联</span></td>
+        <td>两理论如何衔接；H1—H4 如何逐条推导；替代模型是否纳入设计</td>
+        <td>我把衔接点定在“已成形的理解需要外部验证”，你认可吗？若采用循环模型，H4 的表述要怎么改？</td>
+      </tr>
+      <tr>
+        <td><strong>同学五</strong><br><span style="font-size:12px;color:var(--muted)">测量</span></td>
+        <td>C1 与 C2 的量表对应；是否存在成熟工具；能否加入过程指标</td>
+        <td>现有量表测的是“自组织”还是“自我调节”？如果没有对应工具，我们是否要开发或改用行为指标？</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <span class="tag">接口原则</span>
+    我不替别人定概念，也不把未定的概念写成已定。我的正文统一使用带括号的暂定表述，等前端定稿后一次性替换，避免各章术语互相打架。
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section id="s11">
+  <h2><span class="num">11</span>下一步与交付</h2>
+  <p class="lede">按“先补最致命的缺口”排序，而不是按写作顺手程度排序。</p>
+
+  <div class="step">
+    <div class="when">第 1 优先<br>本周内</div>
+    <div class="what">
+      <h4>补齐 A→C1 的邻近实证</h4>
+      <p>分别检索正念、坚毅、韧性与认知灵活性、知识整合、开放性任务坚持的关系；优先找本科生或高等教育样本。目标是至少为三种资源各找到一条可引用证据，找不到就明确写“证据不足”。</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="when">第 2 优先<br>本周内</div>
+    <div class="what">
+      <h4>写死 C1 的操作性定义</h4>
+      <p>给出过程定义、可观察成分、与顿悟/认知灵活性/知识整合的区分表。这是与同学五对齐的前提，没有它，量表讨论无法进行。</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="when">第 3 优先<br>下周初</div>
+    <div class="what">
+      <h4>完成理论绑定小节初稿</h4>
+      <p>约 1500—2000 字：理论定位、三层分工、A→C1 机制链、边界与反证。所有强主张都标注证据等级。</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="when">第 4 优先<br>下周中</div>
+    <div class="what">
+      <h4>与同学四合并串联论证</h4>
+      <p>把我的“衔接点”与他的 H1—H4 推导对齐，统一顺序论证的措辞，避免两章一个说“必然”、一个说“候选”。</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="when">持续</div>
+    <div class="what">
+      <h4>核验 SSCI 与补检</h4>
+      <p>在 Master Journal List 逐刊核对目标期刊；按补检式继续检索，新增文献进入同一张证据矩阵，不另起一套标准。</p>
+    </div>
+  </div>
+
+  <h3>本周可交付物</h3>
+  <ul>
+    <li>理论绑定小节初稿（含引用与证据等级标注）。</li>
+    <li>C1 操作性定义草案与相邻构念区分表。</li>
+    <li>扩充后的文献评读表（目标 10—12 篇，其中至少 3 篇直接涉及心理资源与认知过程）。</li>
+    <li>与同学四、五的一页纸接口问题清单。</li>
+  </ul>
+</section>
+
+<!-- ============ 12 ============ -->
+<section id="s12">
+  <h2><span class="num">12</span>汇报口径与问答</h2>
+  <p class="lede">汇报时只讲三种句子：已核实的、明确标为待检验的、明确说不知道的。以下是最可能被问到的七个问题。</p>
+
+  <h3>两分钟口头稿</h3>
+  <div class="callout">
+    我负责的是“心理资源到认知自组织”这一段，以及认知自组织为什么暂列第一中介。目前完成的是理论绑定初稿和一轮定向文献核查，不是系统综述。<br><br>
+    我的核心判断是：复杂系统理论能解释的是互动、不确定性与涌现的过程条件，不能直接证明变量顺序。因此我把论证拆成两层：第一层说明为什么这个视角适合研究学习过程；第二层说明为什么认知重组在功能上先于反馈校准——先有可被检验的理解，才谈得上依据反馈修正。第二层是概念论证，需要纵向数据检验。<br><br>
+    文献上我核了 6 篇 2024 年后的论文，最相关的是 Sato 等 2025 年发表于《Teaching and Teacher Education》的研究，以及 Thien 与 Hallinger 2025 年关于教育系统非线性与双向关系的研究。后者反而提醒我们：单向串联是一个需要防守的简化。下一步我会补 A→C1 的直接证据，并把 C1 的操作性定义与同学五对齐。
+  </div>
+
+  <h3>追问备答</h3>
+  <table>
+    <thead><tr><th style="width:33%">可能的问题</th><th>回答要点</th></tr></thead>
+    <tbody>
+      <tr><td>为什么非用复杂系统理论？认知心理学不够吗？</td><td>因为问题关注的是多资源、情境与认知过程的互动，而不是单一变量的静态预测。它提供上位框架，不排斥具体认知理论；具体机制仍要单独论证。若我们的设计体现不了互动与过程，这个理论就只是装饰，这一点我会在设计里处理。</td></tr>
+      <tr><td>复杂系统理论哪一句支持你的中介顺序？</td><td>没有哪一句直接支持。该理论支持的是过程性、非线性和互惠性，不提供路径顺序。顺序来自功能论证与对象依赖，须由数据检验。这是我这周主动修正的地方。</td></tr>
+      <tr><td>C1 到底是什么？和顿悟、认知灵活性有何区别？</td><td>目前是过程性定义：对分散信息与经验进行连接、重组，形成新的问题表征或理解。顿悟更像结果体验，认知灵活性更像能力倾向；C1 强调组织过程本身。操作性定义仍在与同学五对齐。</td></tr>
+      <tr><td>心理资源为什么能导致认知自组织？有证据吗？</td><td>目前只有构念推理与邻近证据，没有直接实证。我把机制拆成“资源—参与—认知重组”三段，分别找证据；找不到的部分会明确写成待检验，不用理论口号替代。</td></tr>
+      <tr><td>横断面问卷能证明先后吗？</td><td>不能。横断面只能检验关联结构与理论模型是否相容。时间先后需要三波追踪或实验操纵，我会在局限中写清，并把替代模型纳入比较。</td></tr>
+      <tr><td>你引的这些是 SSCI 吗？</td><td>我核对了 DOI、作者、年份、期刊与卷期，但索引数据库不能证明某年度 SSCI 收录。正式提交前会在 Master Journal List 逐刊核实，汇报时不会笼统说“SSCI 论文”。</td></tr>
+      <tr><td>你这周到底交付了什么？</td><td>理论绑定初稿、6 篇近期文献的逐篇评读、论断—证据矩阵、三个竞争模型，以及给四位同学的具体接口问题。系统综述与 C1 量表对应尚未完成，这是下一阶段任务。</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <span class="tag">最后提醒自己</span>
+    不要把“我读了六篇”说成“文献综述已完成”，也不要把“理论说得通”说成“假设已被支持”。这一页的价值在于：我清楚知道哪一格还空着。
+  </div>
+</section>
+
+<footer>
+  同学二 · 复杂系统理论与第一中介模块 · 阶段进度报告 · 2026-10-27<br>
+  文献元数据经 Crossref 与 OpenAlex 核对；DOI 均可溯源。SSCI 收录状态尚未逐刊官方核验，正文未作此主张。<br>
+  本报告为研究工作稿，不是最终论文文本；引用前请回到原文核对页码、版本与具体表述。
+</footer>
+
+</main>
+</div>
+</div>
+</body>
+</html>
